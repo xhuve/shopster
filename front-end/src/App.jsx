@@ -1,9 +1,17 @@
-import React from 'react'
+import Header from "./components/Header";
+import { Container } from "react-bootstrap";
 
-const App = () => {
+function App() {
   return (
-    <h1>Welcome to Shopster</h1>
-  )
+    <>
+      <Header />
+      <main>
+        <Container>
+          <h1>Hello gais</h1>
+        </Container>
+      </main>
+    </>
+  );
 }
 
-export default App
+export default App;
