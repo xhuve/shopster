@@ -1,5 +1,7 @@
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -7,9 +9,10 @@ function App() {
       <Header />
       <main>
         <Container>
-          <h1>Hello gais</h1>
+          <Outlet />
         </Container>
       </main>
+      <Footer />
     </>
   );
 }
