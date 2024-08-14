@@ -1,0 +1,24 @@
+{
+  "name": "shopster",
+  "type": "module",
+  "version": "2.0.0",
+  "description": "eComm",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./back-end/server.js",
+    "server": "nodemon ./back-end/server.js",
+    "client": "npm start --prefix ./front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Billy",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.3",
+    "nodemon": "^3.1.4"
+  }
+}
