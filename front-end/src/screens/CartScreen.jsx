@@ -68,7 +68,7 @@ const CartScreen = () => {
                 )}
             </Col>
             <Col md={4}>
-                <Card>
+                <Card className='mt-5'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>
