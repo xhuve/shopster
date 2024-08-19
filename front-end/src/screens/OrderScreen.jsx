@@ -19,8 +19,6 @@ const OrderScreen = () => {
 
     const { data: paypal, isLoading: loadingPaypal, error: errorPayPal } = useGetPayPalClientIdQuery()
 
-    const { userInfo } = useSelector((state) => state.auth)
-
     useEffect(() => {
         console.log("🚀 ~ useEffect ~ paypal:", paypal)
         if (!errorPayPal && !loadingPaypal && paypal.clientId) {

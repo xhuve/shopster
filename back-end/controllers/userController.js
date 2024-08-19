@@ -93,16 +93,18 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         user.name = req.body.name || user.name
         user.email = req.body.email || user.name
 
-        if (user.body.password) {
+        console.log("🚀 ~ updateUserProfile ~ body:", req.body)
+        if (user.body?.password) {
             user.password = req.body.password
+        } else {
+            const updatedUser = await user.save()
+    
+            res.status(200).json({
+                _id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email
+            })
         }
-        const updatedUser = await user.save()
-
-        res.status(200).json({
-            _id: updatedUser._id,
-            name: updatedUser.name,
-            email: updatedUser.email
-        })
     } else {
         res.status(404)
         throw new Error('User not found')

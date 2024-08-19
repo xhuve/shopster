@@ -4,6 +4,7 @@ import User from '../models/userModel.js'
 
 export const protectRoutes = asyncHandler(async (req, res, next) => {
     let token = req.cookies.jwt
+    console.log("🚀 ~ protectRoutes ~ token:", token)
 
     if (token) {
         try {
