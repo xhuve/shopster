@@ -3,13 +3,11 @@ import asyncHandler from './asyncHandler.js'
 import User from '../models/userModel.js'
 
 export const protectRoutes = asyncHandler(async (req, res, next) => {
-    console.log("🚀 ~ protectRoutes ~ req.cookie:", req.cookies)
     let token = req.cookies.jwt
 
     if (token) {
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
-            console.log("🚀 ~ protectRoutes ~ decoded:", decoded)
             req.user = await User.findById(decoded.id).select('-password')
             next()
         } catch (error) {

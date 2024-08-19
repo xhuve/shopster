@@ -21,7 +21,6 @@ const cartSlice = createSlice({
             return updateCart(state)
         },
         removeFromCart: (state, action) => {
-            console.log("first")
             state.cartItems = state.cartItems.filter((x) => x._id !== action.payload)
 
             return updateCart(state)
