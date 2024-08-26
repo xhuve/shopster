@@ -17,7 +17,7 @@ function App() {
     useEffect(() => {
       if (error?.data.message === "Unauthorized")
         dispatch(logout())
-      }, [])
+      }, [error, dispatch])
 
     return (
       <>

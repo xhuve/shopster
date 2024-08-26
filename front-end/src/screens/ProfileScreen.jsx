@@ -21,7 +21,7 @@ const ProfileScreen = () => {
         if (userInfo) {
             setProfileData({...profileData, email: userInfo.email, name: userInfo.name})
         } 
-    }, [userInfo, userInfo.name, userInfo.email])
+    }, [userInfo, userInfo.name, userInfo.email, profileData])
 
     const [updateProfile, { isLoading: loadingUpdateProfile, }] = useUpdateProfileMutation()
 
