@@ -41,6 +41,7 @@ const ProductListScreen = () => {
                 </Col>
             </Row>
 
+            
             { isLoading ? <Loader /> : error ? 
                 <Message variant='danger'>{error}</Message> : (
                 <>
@@ -77,6 +78,7 @@ const ProductListScreen = () => {
                             ))}
                         </tbody>
                     </Table>
+                    {createLoading && <Loader />}
                 </>
             )}
         </>
