@@ -15,7 +15,7 @@ function App() {
     const dispatch = useDispatch()
   
     useEffect(() => {
-      if (error?.data.message === "Unauthorized")
+      if (error?.data?.message === "Unauthorized")
         dispatch(logout())
       }, [error, dispatch])
 
