@@ -11,7 +11,8 @@
     "client": "npm start --prefix ./front-end",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node ./back-end/seeder.js",
-    "data:destroy": "node ./back-end/seeder.js -d"
+    "data:destroy": "node ./back-end/seeder.js -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix front-end"
   },
   "author": "Billy",
   "license": "ISC",
