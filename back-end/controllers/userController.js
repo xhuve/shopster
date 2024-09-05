@@ -2,6 +2,7 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/userModel.js";
 import Product from "../models/productModel.js";
 import generateToken from "../utils/generateToken.js";
+import mongoose from "mongoose";
 
 // @desc    Authenticate a user
 // @route   POST /api/users/login
@@ -176,10 +177,28 @@ const getUserWishlistProducts = asyncHandler(async (req, res) => {
 const addProductToWishlist = asyncHandler(async (req, res) => {
   const user = await User.findById(req.body._id);
   const product = await Product.findById(req.body.productId);
+  const productExists = user.wishlist.find((x) => x.toString() === product._id);
+
+  if (productExists) {
+    res.status(404);
+    throw new Error("Product already in wishlist");
+  }
 
   user.wishlist.push(product);
+  console.log("🚀 ~ addProductToWishlist ~ user.wishlist:", user.wishlist);
   await user.save();
   res.status(200).json({ message: "Product added" });
+});
+
+const deleteProductFromWishlist = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.body.id);
+  const productIndex = user.wishlist.findIndex(
+    (value) => value.toString() === req.body.productId
+  );
+
+  user.wishlist.splice(productIndex, 1);
+  await user.save();
+  res.status(200).json({ message: "Product removed" });
 });
 
 export {
@@ -194,4 +213,5 @@ export {
   updateUser,
   addProductToWishlist,
   getUserWishlistProducts,
+  deleteProductFromWishlist,
 };

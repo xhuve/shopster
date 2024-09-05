@@ -12,6 +12,7 @@ import {
   registerUser,
   addProductToWishlist,
   getUserWishlistProducts,
+  deleteProductFromWishlist,
 } from "../controllers/userController.js";
 import { adminRoutes, protectRoutes } from "../middleware/authMiddleware.js";
 
@@ -22,7 +23,8 @@ router
 router
   .route("/wishlist")
   .get(getUserWishlistProducts)
-  .post(addProductToWishlist);
+  .post(addProductToWishlist)
+  .delete(deleteProductFromWishlist);
 router.post("/login", authUser);
 router.route("/logout").get(protectRoutes, logoutUser);
 router

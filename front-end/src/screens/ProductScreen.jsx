@@ -47,10 +47,7 @@ const ProductScreen = () => {
   const [createReview, { isLoading: reviewLoading, isError: reviewError }] =
     useCreateReviewMutation();
 
-  const [
-    addToUserWishlist,
-    { isLoading: wishlistLoading, isError: wishError },
-  ] = useAddToUserWishlistMutation();
+  const [addToUserWishlist, {}] = useAddToUserWishlistMutation();
 
   const addToWishlist = (id) => {
     addToUserWishlist({ ...userInfo, productId: id });
