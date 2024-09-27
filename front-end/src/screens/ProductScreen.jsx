@@ -127,23 +127,12 @@ const ProductScreen = () => {
                   </ListGroup.Item>
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
-                      <Row>
+                      <Row sm={2}>
                         <Col>Qty</Col>
-                        <Col>
-                          <Form.Control
-                            as="select"
-                            value={qty}
-                            onChange={(e) => setQty(Number(e.target.value))}
-                          >
-                            {[...Array(product.countInStock)].map((x, i) => {
-                              i += 1;
-                              return (
-                                <option key={i} value={i}>
-                                  {i}
-                                </option>
-                              );
-                            })}
-                          </Form.Control>
+                        <Col className="d-flex flex-row align-items-center  gap-3">
+                          <Button className="btn-sm">+</Button>
+                          <p>{qty}</p>
+                          <Button className="btn-sm">-</Button>
                         </Col>
                       </Row>
                     </ListGroup.Item>

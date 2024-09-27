@@ -1,4 +1,4 @@
-import { Col, ListGroup, Row, Button, Image, Form } from "react-bootstrap";
+import { Col, ListGroup, Row, Button, Image } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
@@ -20,8 +20,7 @@ const WishlistScreen = () => {
   const [deleteFromWishlist, { isLoading: deletingWish }] =
     useDeleteFromWishlistMutation();
 
-  const { data: products, status, refetch } = useGetUserWishlistQuery({ id });
-  console.log("🚀 ~ WishlistScreen ~ products:", products);
+  const { data: products, refetch } = useGetUserWishlistQuery({ id });
 
   const addToCartHandler = (product) => {
     dispatch(addToCart({ ...product, qty: product.qty }));
